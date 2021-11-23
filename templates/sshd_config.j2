@@ -21,6 +21,8 @@ PubkeyAuthentication yes
 HostKey {{key}}
 {% endfor %}
 
+AuthorizedKeysFile {{ sshd_authorized_keys_file }}
+
 ### CRYPTOGRAPHY ###
 
 Ciphers {{ openssh_ciphers| join(',') }}
@@ -30,8 +32,8 @@ KexAlgorithms {{ openssh_kexalgorithms| join(',') }}
 ### SECURITY CONFIGURATION ###
 
 # Logging
-SyslogFacility AUTH
-LogLevel INFO
+SyslogFacility {{ sshd_syslog_facility }}
+LogLevel {{ sshd_syslog_loglevel }}
 
 #Privilege Separation is turned on for security
 
@@ -40,7 +42,7 @@ UsePrivilegeSeparation {% if openssh_version.stdout >= '5.9'-%}{{ sshd_privilege
 {% endif %}
 
 # Authentication:
-LoginGraceTime 30
+LoginGraceTime {{ sshd_login_grace }}
 PermitRootLogin {{ sshd_root_login }}
 StrictModes yes
 
@@ -77,7 +79,7 @@ GSSAPICleanupCredentials yes
 X11Forwarding {{ sshd_x11_forwarding }}
 PrintMotd no
 PrintLastLog yes
-TCPKeepAlive no
+TCPKeepAlive {{ sshd_tcp_keep_alive }}
 
 Banner {{ sshd_banner }}
 
@@ -94,8 +96,7 @@ ClientAliveCountMax {{ sshd_client_alive_countMax }}
 
 Subsystem sftp /usr/lib/openssh/sftp-server
 
+{% if sshd_accept_env -%}
 # Accept locale-related environment variables
-AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
-AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
-AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
-AcceptEnv XMODIFIERS
+AcceptEnv {{ sshd_accept_env_string }}
+{% endif %}

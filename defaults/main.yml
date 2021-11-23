@@ -24,6 +24,15 @@ sshd_port: "22"
 # Use only ssh protocol version 2
 sshd_protocol_version: "2"
 
+# Set Public Key location
+sshd_authorized_keys_file: ".ssh/authorized_keys .ssh/authorized_keys2"
+
+# Define Syslog Facility
+sshd_syslog_facility: "AUTH"
+
+# Define Syslog LogLevel
+sshd_syslog_loglevel: "INFO"
+
 # Listening on specific address
 sshd_listening_address:
   - 0.0.0.0
@@ -34,6 +43,9 @@ sshd_host_key_files: []
 # Deny root login
 sshd_root_login: "no"
 
+# SSHD Login Timeout
+sshd_login_grace: 30
+
 # Disable kerberos
 sshd_kerberos_support: false
 
@@ -42,6 +54,9 @@ sshd_gssapi_support: false
 
 # Disable x11 forwarding
 sshd_x11_forwarding: "no"
+
+# TCP Keep Alives
+sshd_tcp_keep_alive: "no"
 
 # Disable agent forwarding
 sshd_agent_forwarding: "no"
@@ -69,6 +84,10 @@ sshd_password_authentification: "yes"
 # Limit max connexion non-authentified concurency and max try
 sshd_max_auth_tries: "5"
 sshd_max_startups: "10:30:100"
+
+# Indicate if AcceptEnv should be set
+sshd_accept_env: false
+sshd_accept_env_string: "LANG LC_* XMODIFIERS LANG"
 
 ### OPENSSH-CLIENT ###
 
