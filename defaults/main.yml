@@ -65,7 +65,7 @@ sshd_agent_forwarding: "no"
 sshd_tcp_forwarding: "no"
 
 # Disconnect idle sessions
-sshd_client_alive_intervale: "300"
+sshd_client_alive_interval: "300"
 sshd_client_alive_countMax: "2"
 
 # Set banner
