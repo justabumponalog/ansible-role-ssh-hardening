@@ -35,9 +35,8 @@ KexAlgorithms {{ openssh_kexalgorithms| join(',') }}
 SyslogFacility {{ sshd_syslog_facility }}
 LogLevel {{ sshd_syslog_loglevel }}
 
-#Privilege Separation is turned on for security
-
 {% if openssh_version.stdout is version('7.5', '<') %}
+#Privilege Separation is turned on for security
 UsePrivilegeSeparation {% if openssh_version.stdout >= '5.9'-%}{{ sshd_privilege_separation_59 }}{% else %}{{ sshd_privilege_separation_53 }}{% endif %}
 {% endif %}
 
@@ -83,9 +82,6 @@ TCPKeepAlive {{ sshd_tcp_keep_alive }}
 
 Banner {{ sshd_banner }}
 
-# Allow client to pass locale environment variables
-AcceptEnv LANG LC_*
-
 AllowAgentForwarding {{ sshd_agent_forwarding }}
 AllowTcpForwarding {{ sshd_tcp_forwarding }}
 
@@ -97,6 +93,6 @@ ClientAliveCountMax {{ sshd_client_alive_countMax }}
 Subsystem sftp /usr/lib/openssh/sftp-server
 
 {% if sshd_accept_env -%}
-# Accept locale-related environment variables
+# Allow client to pass environment variables
 AcceptEnv {{ sshd_accept_env_string }}
 {% endif %}
