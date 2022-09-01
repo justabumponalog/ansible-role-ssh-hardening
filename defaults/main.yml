@@ -114,6 +114,7 @@ openssh_kexalgorithms: []
 sshd_host_key_algorithms: 
   - ssh-ed25519-cert-v01@openssh.com
   - ssh-rsa-cert-v01@openssh.com
+  - ssh-ed25519
 
 # Cipher do not use sha1
 ciphers_openssh_66:
