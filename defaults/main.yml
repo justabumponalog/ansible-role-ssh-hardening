@@ -46,6 +46,9 @@ sshd_root_login: "no"
 # SSHD Login Timeout
 sshd_login_grace: 30
 
+# Enable Public Key Authentication
+sshd_pubkey_authentication: "yes"
+
 # Disable kerberos
 sshd_kerberos_support: false
 
@@ -72,7 +75,7 @@ sshd_client_alive_countMax: "2"
 sshd_banner: "/etc/issue.net"
 
 # Enable PAM authentification - not all hosts link sshd to libpam
-sshd_enable_pam: True
+sshd_enable_pam: true
 
 # Use pam authentification - If above is set to false, has no effect
 sshd_pam: "yes"
