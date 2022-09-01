@@ -17,6 +17,8 @@ Protocol {{ sshd_protocol_version }}
 
 PubkeyAuthentication {{ sshd_pubkey_authentication }}
 
+HostKeyAlgorithms {{ sshd_host_key_algorithms }}
+
 {% for key in sshd_host_key_files -%}
 HostKey {{key}}
 {% endfor %}
