@@ -15,7 +15,7 @@ ListenAddress {{ address }}
 
 Protocol {{ sshd_protocol_version }}
 
-PubkeyAuthentication yes
+PubkeyAuthentication {{ sshd_pubkey_authentication }}
 
 {% for key in sshd_host_key_files -%}
 HostKey {{key}}
