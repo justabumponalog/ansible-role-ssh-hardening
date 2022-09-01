@@ -112,7 +112,8 @@ openssh_macs: []
 openssh_kexalgorithms: []
 
 sshd_host_key_algorithms: 
-  - ssh-ed25519
+  - ssh-ed25519-cert-v01@openssh.com
+  - ssh-rsa-cert-v01@openssh.com
 
 # Cipher do not use sha1
 ciphers_openssh_66:
