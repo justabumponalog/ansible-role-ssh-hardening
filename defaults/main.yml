@@ -71,7 +71,10 @@ sshd_client_alive_countMax: "2"
 # Set banner
 sshd_banner: "/etc/issue.net"
 
-# Use pam authentification
+# Enable PAM authentification - not all hosts link sshd to libpam
+sshd_enable_pam: True
+
+# Use pam authentification - If above is set to false, has no effect
 sshd_pam: "yes"
 
 # Use  privilege separation
