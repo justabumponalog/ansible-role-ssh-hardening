@@ -111,6 +111,9 @@ openssh_ciphers: []
 openssh_macs: []
 openssh_kexalgorithms: []
 
+sshd_host_key_algorithms: 
+  - ssh-ed25519
+
 # Cipher do not use sha1
 ciphers_openssh_66:
   - chacha20-poly1305@openssh.com
@@ -130,8 +133,6 @@ macs_openssh_76:
   - hmac-sha2-512-etm@openssh.com
   - hmac-sha2-256-etm@openssh.com
   - umac-128-etm@openssh.com
-  - hmac-sha2-512
-  - hmac-sha2-256
 
 macs_openssh_66:
   - hmac-sha2-512-etm@openssh.com
@@ -150,7 +151,6 @@ macs_openssh_53:
 # Key exchange algorithms
 kexalgorithms_openssh_66:
   - curve25519-sha256@libssh.org
-  - diffie-hellman-group-exchange-sha256
 
 kexalgorithms_openssh_53:
   - diffie-hellman-group-exchange-sha256
