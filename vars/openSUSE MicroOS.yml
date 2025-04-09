@@ -7,3 +7,5 @@ sshd_config_group: root
 ssh_config: /etc/ssh/ssh_config
 ssh_user_directory: /root/.ssh
 ssh_user_keys_file: /root/.ssh/authorized_keys
+
+host_sftp_server_path: /usr/libexec/ssh/sftp-server
